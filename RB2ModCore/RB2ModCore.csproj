@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    The .rb2mod rules shared by the Mod Manager (tools/RB2ModManager) and the Raging Blast Engine: reading and checking a
+    package, the character IDs it uses, installing, turning on / off, removing and moving a character to another ID.
+    No UI and no Windows-only API: the Mod Manager also runs under Wine / Proton.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>RB2ModCore</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- GameBanana only takes archives (.zip / .7z / .rar): the .rb2mod files come inside one (MIT licence) -->
+    <PackageReference Include="SharpCompress" Version="0.50.7" />
+  </ItemGroup>
+</Project>
