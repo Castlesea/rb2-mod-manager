@@ -1,3 +1,5 @@
+<img src="icon.png" width="128" alt="Raging Blast 2 Mod Manager icon">
+
 # Raging Blast 2 Mod Manager
 
 The mod manager of the **Dragon Ball: Raging Blast 2 PC Port**. It installs `.rb2mod` packages, turns mods on and off,
