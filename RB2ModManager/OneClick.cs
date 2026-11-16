@@ -19,10 +19,11 @@ public static class OneClick
 
     public static bool IsLink(string text) => text.StartsWith(Scheme + ":", StringComparison.OrdinalIgnoreCase);
 
-    /// <summary>(mod, file) of a GameBanana 1-click link, or null when it isn't one for a mod.</summary>
+    /// <summary>(mod, file) of a GameBanana 1-click link, or null when it isn't one for a mod. The file's URL may carry a
+    /// query (GameBanana adds "?toolid=N", the mod manager's own id: "mmdl/1887436?toolid=24935,Mod,739905").</summary>
     public static (int Mod, int File)? Parse(string link)
     {
-        var match = Regex.Match(link, @"mmdl/(\d+),(\w+),(\d+)", RegexOptions.IgnoreCase);
+        var match = Regex.Match(link, @"mmdl/(\d+)(?:\?[^,]*)?,(\w+),(\d+)", RegexOptions.IgnoreCase);
         if (!match.Success || !match.Groups[2].Value.Equals("Mod", StringComparison.OrdinalIgnoreCase)) return null;
         return (int.Parse(match.Groups[3].Value), int.Parse(match.Groups[1].Value));
     }

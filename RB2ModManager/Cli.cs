@@ -147,6 +147,10 @@ public static class Cli
                     }
                     return 0;
                 }
+                case "gb-link" when args.Length > 1:
+                    // a 1-click link as GameBanana sends it: which mod and file it installs
+                    Console.WriteLine(OneClick.Parse(args[1]) is { } target ? $"mod {target.Mod} file {target.File}" : "not a mod link");
+                    return 0;
                 case "gb-mod" when args.Length > 1:
                 {
                     var profile = await client.Profile(int.Parse(args[1]));
